@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define INITIAL_ALLOC_SIZE (4 * 1024 * 1024 * 1024)
+#define INITIAL_ALLOC_SIZE (4ULL * 1024 * 1024 * 1024)
 #define MAX_PATH_SIZE 1024
 
 typedef struct {
