@@ -3,7 +3,7 @@ SAF is an archive format designed to be easy and fast to parse. It can be used a
 Its features include:
 * Easy to parse
 * Supports up to 256 letter file and directory names
-* Supports archive sizes up to 1 GB
+* Supports archive sizes up to 4 GB
 * Optional compression using other programs
 
 ## Build Instructions
