@@ -2,11 +2,14 @@
 #include <dirent.h>
 #include <memory.h>
 #include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #define INITIAL_ALLOC_SIZE (4ULL * 1024 * 1024 * 1024)
 #define MAX_PATH_SIZE 1024
+
+static bool is_quiet = false;
 
 typedef struct {
     uint8_t* ptr;
@@ -33,6 +36,9 @@ static void panic(const char* msg, ...)
 
 static void info(const char* msg, ...)
 {
+    if (is_quiet)
+        return;
+
     printf("\033[32minfo: \033[0m");
     va_list args;
     va_start(args, msg);
@@ -137,9 +143,10 @@ static nodelist_t* make_node(char* path)
 int main(int argc, char* argv[])
 {
     if (argc < 2) {
-        printf("Usage: saf-make <folder-name> <archive-name>\n");
+        printf("Usage: saf-make <folder-name> <archive-name> [-q]\n");
         exit(EXIT_FAILURE);
     }
+    is_quiet = (argc == 4);
 
     char* input = argv[1];
     char* output = "archive.saf";

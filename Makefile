@@ -1,5 +1,4 @@
-CC = clang
-CFLAGS = -Wall -Wextra -Ofast
+CFLAGS = -Wall -Wextra -Wno-unused-result -Ofast
 
 SOURCES = $(wildcard *.c)
 EXECUTABLES = $(basename $(SOURCES))
@@ -9,7 +8,7 @@ EXECUTABLES = $(basename $(SOURCES))
 all: $(EXECUTABLES)
 
 $(EXECUTABLES): %: %.c
-	$(CC) $(CFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $^ -o $@
 
 clean:
-	rm -f $(EXECUTABLES)
+	@rm -f $(EXECUTABLES)
