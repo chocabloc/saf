@@ -8,6 +8,7 @@ EXECUTABLES = $(basename $(SOURCES))
 all: $(EXECUTABLES)
 
 $(EXECUTABLES): %: %.c
+	@echo Compiling $^...
 	@$(CC) $(CFLAGS) $^ -o $@
 
 clean:
